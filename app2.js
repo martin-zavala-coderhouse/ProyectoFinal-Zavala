@@ -62,9 +62,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+        // Formatear el valor para la alerta
+        const valorFormateado = valor.toLocaleString('es-ES', { style: 'currency', currency: 'CLP' });
+
 
         actualizarCarrito();
-        alert(`¡${nombre} agregado al carrito por $${valor}!`);
+        alert(`¡${nombre} agregado al carrito por $ ${valorFormateado}!`);
     };
 
     // Función para eliminar un producto del carrito
