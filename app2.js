@@ -7,14 +7,34 @@ document.addEventListener('DOMContentLoaded', function () {
     // Obtener el carrito desde localStorage al cargar la página
     const carritoGuardado = JSON.parse(localStorage.getItem('carrito')) || [];
 
-
+                /* este lo borro porque quiero que salga el alert solo en index no en el carrito
     if ((carritoGuardado.length >= 1)) {
         alert("Guardamos tu compra en el local storage, puedes agregar más productos!");
         carrito = carritoGuardado;
         actualizarCarrito();
     } else {
         alert("No tienes productos agregados");
+    }           */
+
+
+
+    if (carritoGuardado.length >= 1) {
+        // Verificar si la página actual es index.html
+        if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+            alert("Guardamos tu compra en el local storage, puedes agregar más productos!");
+        }
+        carrito = carritoGuardado;
+        actualizarCarrito();
+    } else {
+        // Verificar si la página actual es index.html
+        if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+            alert("No tienes productos agregados");
+        }
     }
+    
+
+
+
 
     // Resto de tu código ...
 
@@ -30,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const productoElement = document.createElement('div');
             productoElement.classList.add('producto');
 
+
+
+                                            //1 locale precio formateado
             const precioFormateado = producto.valor.toLocaleString('es-ES', { style: 'currency', currency: 'CLP' });
 
             productoElement.innerHTML = `
@@ -62,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-        // Formatear el valor para la alerta
+                                    // 2 locale Formatear el valor para la alerta
         const valorFormateado = valor.toLocaleString('es-ES', { style: 'currency', currency: 'CLP' });
 
 
@@ -106,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
             numProductosCarrito += item.cantidad; // Incrementar el contador
 
 
-            //subtotal a cl
+                                                    //3 locale subtotal a cl
             const subtotalFormateado = subtotal.toLocaleString('es-ES', { style: 'currency', currency: 'CLP' });
 
             itemElement.innerHTML = `
@@ -116,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
             carritoContainer.appendChild(itemElement);
         });
 
-        //tranformar a cl
+                                                //4   locale tranformar total carrito
         const totalCarritoFormateado = totalCarrito.toLocaleString('es-ES', { style: 'currency', currency: 'CLP' });
 
         const totalElement = document.createElement('div');
@@ -138,3 +161,5 @@ document.addEventListener('DOMContentLoaded', function () {
     // Llama a la función para mostrar los productos
     mostrarProductos();
 });
+
+
