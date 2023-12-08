@@ -20,14 +20,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (carritoGuardado.length >= 1) {
         // Verificar si la página actual es index.html
-        if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+        if (window.location.pathname === "/index.html" || window.location.pathname === "/") {
             alert("Guardamos tu compra en el local storage, puedes agregar más productos!");
         }
         carrito = carritoGuardado;
         actualizarCarrito();
     } else {
         // Verificar si la página actual es index.html
-        if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+        if (window.location.pathname === "/index.html" || window.location.pathname === "/") {
             alert("No tienes productos agregados");
         }
     }
