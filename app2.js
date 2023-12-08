@@ -16,22 +16,22 @@ document.addEventListener('DOMContentLoaded', function () {
         alert("No tienes productos agregados");
     }           */
 
-    function mostrarProductos2() {
+
 
     if (carritoGuardado.length >= 1) {
         // Verificar si la página actual es index.html
-        if (location.pathname === '/index.html' || location.pathname === '/') {
+        if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
             alert("Guardamos tu compra en el local storage, puedes agregar más productos!");
         }
         carrito = carritoGuardado;
         actualizarCarrito();
     } else {
         // Verificar si la página actual es index.html
-        if (location.pathname === '/index.html' || location.pathname === '/') {
+        if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
             alert("No tienes productos agregados");
         }
     }
-}
+    
 
 
 
@@ -160,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Llama a la función para mostrar los productos
     mostrarProductos();
-    mostrarProductos2()
 });
 
 
