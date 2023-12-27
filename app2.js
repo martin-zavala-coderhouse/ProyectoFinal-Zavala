@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* document.addEventListener("DOMContentLoaded", function () { */
+  document.addEventListener("DOMContentLoaded", async function () {
   const productosContainer = document.getElementById("productos");
   const carritoContainer = document.getElementById("carrito");
   let carrito = [];
@@ -37,28 +38,44 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Resto de tu código ...
 
-  const productos = [
-    {
-      nombre: "Call of Duty Modern Warfare 1 reboot",
-      valor: 10000,
-      descripcion: "Nuevo",
-      img: "./imagen/mw1.jpg",
-    },
-    {
-      nombre: "Call of Duty Modern Warfare 2 reboot",
-      valor: 20000,
-      descripcion: "Nuevo",
-      img: "./imagen/mw2.jpg",
-    },
-    {
-      nombre: "Call of Duty Modern Warfare 3 reboot",
-      valor: 30000,
-      descripcion: "Nuevo",
-      img: "./imagen/mw3.jpg",
-    },
-  ];
+
+  const productos = await obtenerProductos();
+
+
+   async function obtenerProductos() {
+    try {
+      const response = await fetch("./productos.json");
+      const productos = await response.json();
+      return productos;
+    } catch (error) {
+      console.error("Error al obtener productos el archivo json no existe o no se encuentra:", error);
+      return [];
+    }
+  }
+
+   
+  
+/*   async function obtenerProductos() {
+    return new Promise((resolve, reject) => {
+      fetch("./productos.json")
+        .then((response) => response.json())
+        .then((productos) => resolve(productos))
+        .catch((error) => {
+          console.error(
+            "Error al obtener productos el archivo json no existe o no se encuentra:",
+            error
+          );
+          reject([]);
+        });
+    });
+  }
+
+
+ */
+
+
+
 
   // Función para agregar productos al contenedor
   function mostrarProductos() {
@@ -87,14 +104,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Función para agregar al carrito      // windows pa ra destinarl a al ambito global
   window.agregarAlCarrito = function (nombre, valor, img) {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "Estas Seguro?",
+      text: "No, podras revertir esta acción!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, add to cart!",
-      cancelButtonText: "No, cancel", // Cambia el texto del botón de cancelar
+      confirmButtonText: "Si, agregamelo a mi carrito!",
+      cancelButtonText: "No, cancelar", // Cambia el texto del botón de cancelar
     }).then((result) => {
       if (result.isConfirmed) {
         const productoEnCarrito = carrito.find(
@@ -118,8 +135,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Mostrar una alerta
         Swal.fire({
-          title: "Added!",
-          text: `${nombre} has been added to the cart for ${valorFormateado}.`,
+          title: "Agregar!",
+          text: `${nombre} ha sido agregado a tu carrito ${valorFormateado}.`,
           imageUrl: `${img}`,
           imageWidth: 200,
           imageHeight: 200,
@@ -128,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         // Mostrar mensaje adicional si el usuario hace clic en "No, cancel"
         Toastify({
-          text: "Operatcion cancelada!",
+          text: "Operación cancelada!",
           className: "info",
           style: {
             background: "linear-gradient(to right, #00b09b, #96c93d)",
@@ -212,12 +229,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   if (carrito.length > 0) {
-  // Configura un temporizador para mostrar el aviso y borrar el carrito después de 10 segundos
+  // Configura un temporizador para mostrar el aviso y borrar el carrito después de 8 segundos
   setTimeout(function () {
     // Mostrar mensaje de aviso
-    alert("Tu carrito se borrará en 20 segundos");
+    alert("Han pasado 8 segundos desde que guardamos tu carrito (lo borraremos por asi hay otros interesados) , en 5 segundos lo borraremos");
   
-    // Configura un segundo temporizador para borrar el carrito después de 10 segundos adicionales
+    // Configura un segundo temporizador (sobre el otro) para borrar el carrito después de 5 segundos adicionales
     setTimeout(function () {
       // Limpiar el carrito
       carrito = [];
@@ -226,8 +243,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Actualizar la interfaz del carrito
       actualizarCarrito();
       // Mostrar mensaje de carrito eliminado
-      alert("Tu carrito se ha borrado después de 10 segundos");
-    }, 20000); // 10000 milisegundos = 10 segundos para el segundo temporizador
-  }, 10000); // 10000 milisegundos = 10 segundos para el primer temporizador
+      alert("Tu carrito se ha borrado después de 5 segundos adicionales");
+    }, 5000); // 10000 milisegundos
+  }, 8000); // 10000 milisegundos
 }
 });

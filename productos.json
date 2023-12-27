@@ -1,0 +1,21 @@
+[
+    {
+      "nombre": "Call of Duty Modern Warfare 1 reboot",
+      "valor": 10000,
+      "descripcion": "Nuevo",
+      "img": "./imagen/mw1.jpg"
+    },
+    {
+      "nombre": "Call of Duty Modern Warfare 2 reboot",
+      "valor": 20000,
+      "descripcion": "Nuevo",
+      "img": "./imagen/mw2.jpg"
+    },
+    {
+      "nombre": "Call of Duty Modern Warfare 3 reboot",
+      "valor": 30000,
+      "descripcion": "Nuevo",
+      "img": "./imagen/mw3.jpg"
+    }
+  ]
+  
