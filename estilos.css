@@ -19,6 +19,7 @@ body {
   }
   
   .producto {
+    
     border: 1px solid #ddd;
     padding: 10px;
     margin-bottom: 20px;
@@ -30,7 +31,9 @@ body {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
+    
   }
+
   
   button {
     background-color: #4caf50;
@@ -66,7 +69,8 @@ body {
   #carrito button:hover {
     background-color: #c9302c;
   }
-  
+
+
 
 h1 a {
   text-decoration: none;
@@ -81,4 +85,70 @@ h1 a {
 
 .inicio a {
   color: brown;
+}
+
+
+p.clase2 {
+  text-decoration: solid;
+  font-size: 18px;
+  color: brown;
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+p.clase3 {
+  font-style: italic;
+  color: green;
+}
+
+/* 
+
+p.descripcion2 {
+  display: inline-block;
+  vertical-align: top;
+  color: #b62828;
+  font-size: 27px;
+}
+
+ */
+
+
+
+
+ .james {
+  display: flex;
+  flex-direction: row; /* Alinear elementos en una fila */
+}
+
+/* .james img {
+  max-width: 50%;
+} */
+
+.james button {
+  align-items: center; /* Alinear elementos en el centro verticalmente */
+  max-width: 100%;
+}
+
+.descripcion2 {
+  width: 80%;
+  margin-top: 10px; /* Espacio superior */
+  align-self: center;
+}
+
+.bond {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+/* Ajusta el ancho del botón dentro de .bond */
+.bond button {
+  width: 20%; /* Puedes ajustar este valor según tus necesidades */
+}
+
+/* Ajusta el ancho del párrafo con clase .descripcion2 dentro de .bond */
+.bond .descripcion2 {
+  width: 50%; /* Puedes ajustar este valor según tus necesidades */
 }

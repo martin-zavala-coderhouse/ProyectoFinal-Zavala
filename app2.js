@@ -91,10 +91,15 @@
 
       productoElement.innerHTML = `
                 <h2>${producto.nombre}</h2>
-                <p>${producto.descripcion}</p>
-                <p>Precio: ${precioFormateado}</p>
+                <p class="clase2">${producto.descripcion}</p>
+                <p class="clase3">Precio: ${precioFormateado}</p>
+                <div class="james">
                 <img src="${producto.img}" alt="${producto.nombre}">
-                <button onclick="agregarAlCarrito('${producto.nombre}', ${producto.valor}, '${producto.img}')">Agregar al carrito</button>  
+                <div class="bond">
+                <button onclick="agregarAlCarrito('${producto.nombre}', ${producto.valor}, '${producto.img}')">Agregar al carrito</button>
+                <p class="descripcion2">${producto.descripcion2}</p> <!-- Nueva línea para agregar descripcion2 -->
+                </div>
+                   </div>
             `;
 
       productosContainer.appendChild(productoElement);
@@ -135,7 +140,7 @@
 
         // Mostrar una alerta
         Swal.fire({
-          title: "Agregar!",
+          title: "Agregado!",
           text: `${nombre} ha sido agregado a tu carrito ${valorFormateado}.`,
           imageUrl: `${img}`,
           imageWidth: 200,
